@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ml-project.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dsaiproject.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>AI Adoption and Unemployment: A Global Threshold Panel Study</title>
+</head>
+
+<body>
+    <section class="project-detail" id="aiunemployment-project">
+        <a href="index.html#project" class="back-btn">
+            <i class='bx bx-left-arrow-alt'></i>
+            Back
+        </a>
+        <h2 class="heading">AI Adoption and Unemployment: A Global Threshold Panel Study</h2>
+
+        <div class="project-detail-container">
+            <div class="project-overview">
+                <h3 class="sub-heading">Project Overview</h3>
+                <p>This graduation project examines one of the most debated questions in the labour market today: <span class="highlight">does AI innovation reduce or increase unemployment, and does the answer depend on how developed a country's economy already is?</span> Using AI patent filings from 36 countries between 1991 and 2020 as a proxy for AI development, we built a dynamic panel model and an endogenous threshold model to test whether AI's labour market impact is uniform across countries or splits into distinct "regimes" based on income level. The project was submitted as a Bachelor of Science graduation requirement in Economics and Data Science at NTU.</p>
+            </div>
+
+            <div class="image-gallery">
+                <div class="image-box">
+                    <img src="fyp_image1.png" alt="Regime Split at GDP per Capita Threshold" class="project-image">
+                    <div class="image-caption">The dynamic OLS Fixed Effects Model</div>
+                </div>
+            </div>
+
+            <div class="project-details">
+                <h3 class="sub-heading">Business Question</h3>
+                <p>Organisations and governments investing in AI need to know more than whether AI "creates or destroys jobs." They need to know for whom, and when. This project was framed to answer a more decision-useful version of the question: <span class="highlight">is the labour market effect of AI adoption immediate or delayed, and does a country's development level change which effect dominates?</span> Answering this correctly matters for how a government designs reskilling programmes, how a company plans workforce strategy around AI rollout, and how an investor reads AI adoption as a macro signal.</p>
+
+                <h3 class="sub-heading">Data and Approach</h3>
+                <p>We built a balanced panel of 36 countries from 1991 to 2020 using World Bank macroeconomic indicators and World Intellectual Property Organization AI patent data. AI adoption was split into two measures: an "onset" indicator marking the year a country first starts filing AI patents, and an ongoing "intensity" measure capturing how much AI innovation continues afterward. Before modelling, we ran a full diagnostic pipeline (cross sectional dependence tests, panel unit root tests, first differencing) to make sure the regression results were not spurious, a step that is often skipped in less rigorous analyses but is essential for credible conclusions.</p>
+
+                <h3 class="sub-heading">Methods and Analysis Techniques</h3>
+                <div class="analysis-methods">
+                    <div class="method-box">
+                        <h4>Dynamic Panel Fixed Effects (OLS FE)</h4>
+                        <p>Modelled unemployment as persistent over time (this year's unemployment strongly depends on last year's), while controlling for inflation, government spending, foreign investment, and population, and absorbing global shocks with year fixed effects.</p>
+                    </div>
+
+                    <div class="method-box">
+                        <h4>Endogenous Threshold Model (Hansen Grid Search)</h4>
+                        <p>Instead of guessing where "low income" ends and "high income" begins, we let the data find the actual breakpoint by testing every possible GDP per capita cutoff and choosing the one that best fit the model. This avoids injecting a subjective assumption into the analysis, a discipline that matters whenever a business analyst is asked to segment customers, markets, or regions.</p>
+                    </div>
+
+                    <div class="method-box">
+                        <h4>Instrumental Variable Robustness Check (Anderson Hsiao IV)</h4>
+                        <p>Reran the entire analysis using an instrumental variable approach to check whether the original results could be explained away by reverse causality or statistical bias. The results held up, which is what gives the findings enough credibility to inform an actual policy or business recommendation.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">Key Findings</h3>
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <div class="finding-icon">
+                            <i class='bx bx-trending-down'></i>
+                        </div>
+                        <h4>No Immediate Universal Effect</h4>
+                        <p>Across all countries, AI adoption showed no statistically significant immediate effect on unemployment, meaning AI does not create an instant, uniform shock to labour markets.</p>
+                    </div>
+
+                    <div class="finding-card">
+                        <div class="finding-icon">
+                            <i class='bx bx-globe'></i>
+                        </div>
+                        <h4>Development Level Changes the Story</h4>
+                        <p>Once we split countries by development level, a clear pattern emerged: AI intensity was linked to a meaningful drop in unemployment in lower income economies, but only a weak, delayed effect in higher income ones.</p>
+                    </div>
+
+                    <div class="finding-card">
+                        <div class="finding-icon">
+                            <i class='bx bx-time-five'></i>
+                        </div>
+                        <h4>Fast Adjustment Window</h4>
+                        <p>The labour market effects we found were concentrated within a 12 to 18 month window, suggesting AI diffuses into the economy far faster than older technologies like electricity or computers did.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">Why This Matters (For Business and Policy Teams)</h3>
+                <p>This project is ultimately about matching the right workforce strategy to the right context. <span class="highlight">In lower income economies, AI appears to create new jobs fast enough to offset the ones it displaces. In advanced economies like Singapore, the more likely story is internal task reallocation, meaning existing employees shift into new roles rather than net new hiring happening.</span> For a business analyst or strategy team, the implication is direct: if you are advising on AI adoption in a mature economy, plan for upskilling and internal mobility, not headcount growth. If you are advising in an emerging market, the priority shifts toward lowering the barriers to AI adoption to capture the job creation effect while it is strongest. This is the kind of segmented, evidence based recommendation that separates a data backed strategy from a one size fits all assumption.</p>
+
+                <div class="tech-stack">
+                    <h3 class="sub-heading">Technologies and Techniques Used</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon">
+                            <i class='bx bxl-python'></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class='bx bx-scatter-chart'></i>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class='bx bx-stats'></i>
+                            <span>Panel Threshold Regression</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class='bx bx-bar-chart-alt-2'></i>
+                            <span>Instrumental Variable (AH IV)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">Conclusion</h3>
+                <p>Overall, this project shows that AI's effect on unemployment is not one size fits all. <span class="highlight">It depends heavily on how developed an economy already is, and it shows up faster than classic economic theory would predict.</span> The findings support a segmented policy approach: emerging economies should focus on accelerating AI adoption to capture job creation, while advanced economies should prioritise upskilling to manage internal task reallocation. Beyond the specific result, the project demonstrates an end to end applied econometrics workflow, from raw data diagnostics through causal robustness checks, that mirrors how a business or policy analyst would need to defend a data driven recommendation to real stakeholders.</p>
+
+                <div class="btn-group">
+                    <a href="fyp.pdf" class="btn" target="_blank">View Full Report</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ml-project.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dsaiproject.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Property Tax & Housing Affordability Analysis</title>
+</head>
+
+<body>
+    <section class="project-detail" id="propertytax-project">
+        <a href="index.html#project" class="back-btn">
+            <i class='bx bx-left-arrow-alt'></i>
+            Back
+        </a>
+        <h2 class="heading">Property Tax & Housing Affordability Analysis</h2>
+
+        <div class="project-detail-container">
+            <div class="project-overview">
+                <h3 class="sub-heading">Project Overview</h3>
+                <p>This group project for HE4045 (Quantitative Economics with Data Science) investigates how <span class="highlight">property tax revenue relates to housing affordability, economic growth, and standard of living in Singapore</span> between 2010 and 2023. Beyond the academic angle, the project is essentially a policy analytics case study: it uses public data to answer a question that governments, real estate firms, and financial institutions all care about, namely whether taxing property actually makes housing more affordable, or whether it is just a revenue lever. The analysis combines trend analysis, correlation, and causal inference (2SLS) to move from "what happened" to "why it happened," following the same progression used in real-world business analytics: descriptive, then diagnostic, then causal.</p>
+            </div>
+
+            <div class="image-gallery">
+                <div class="image-box">
+                    <img src="proptax_fig1.jpg" alt="Property Tax and GDP per Capita Over Time" class="project-image">
+                    <div class="image-caption">Property tax revenue and GDP per capita show a strong positive co-movement from 2010 to 2023</div>
+                </div>
+            </div>
+
+            <div class="project-details">
+                <h3 class="sub-heading">Business Question</h3>
+                <p>The project was framed around a question any policy or strategy team would ask before recommending action: <span class="highlight">if property tax rises, does affordability actually improve or worsen, and does it come at the cost of broader economic wellbeing?</span> We narrowed scope to private housing (landed property and condominiums) from 2010 to 2023, since private housing behaves more like a free market and gives a cleaner read on tax effects than the heavily regulated public housing segment.</p>
+
+                <h3 class="sub-heading">Data & Approach</h3>
+                <p>We pulled and combined data from four public sources: IRAS property tax records, URA's private residential price index, World Bank GDP per capita, and UN Human Development Index, to build a 2010 to 2023 panel. <span class="highlight">Housing affordability was proxied using a price-to-income ratio</span>, and standard of living was proxied using GDP per capita and HDI.</p>
+
+                <div class="image-gallery double">
+                    <div class="image-box">
+                        <img src="proptax_fig2.png" alt="Price-to-Income Ratio Over Time" class="project-image">
+                        <div class="image-caption">Landed housing affordability (price-to-income ratio), 2010 to 2023</div>
+                    </div>
+                    <div class="image-box">
+                        <img src="proptax_fig3.png" alt="Property Tax and Affordability Correlation" class="project-image">
+                        <div class="image-caption">Property tax vs. affordability, landed segment (Pearson r = -0.084)</div>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">Methods and Analysis Techniques</h3>
+                <div class="analysis-methods">
+                    <div class="method-box">
+                        <h4>Trend & Correlation Analysis</h4>
+                        <p>Tracked how property tax, affordability, GDP per capita, and HDI moved together over 14 years, and quantified the strength of each relationship using Pearson correlation, the same first pass any analyst would run before recommending policy or investment action.</p>
+                    </div>
+
+                    <div class="method-box">
+                        <h4>Instrumental Variable (2SLS) Regression</h4>
+                        <p>Correlation isn't causation. Property tax and affordability both move with the broader economy, so a naive read risks the wrong conclusion. We used government debt as an instrument for property tax to isolate its causal effect on affordability, a technique for separating "these move together" from "one actually drives the other."</p>
+                    </div>
+
+                    <div class="method-box">
+                        <h4>Lagged Variable Analysis</h4>
+                        <p>Tested whether GDP per capita predicts future property tax revenue (rather than the reverse), which matters for forecasting: it suggests tax revenue can be reasonably projected a step ahead of income growth trends.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">Key Findings</h3>
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <div class="finding-icon">
+                            <i class='bx bx-home-alt'></i>
+                        </div>
+                        <h4>Tax ≠ Affordability Lever</h4>
+                        <p>Property tax showed only a weak, statistically fragile relationship with housing affordability. Even the 2SLS causal estimate was significant only at the 10% level. Tax policy alone isn't moving the affordability needle here.</p>
+                    </div>
+
+                    <div class="finding-card">
+                        <div class="finding-icon">
+                            <i class='bx bx-buildings'></i>
+                        </div>
+                        <h4>Supply Rigidity Dominates</h4>
+                        <p>Singapore's landed housing supply is capped and slow moving, so demand from high-income buyers barely reacts to tax changes, a classic case of policy tools losing power when supply can't adjust.</p>
+                    </div>
+
+                    <div class="finding-card">
+                        <div class="finding-icon">
+                            <i class='bx bx-trending-up'></i>
+                        </div>
+                        <h4>Fiscal Tool, Not Price Tool</h4>
+                        <p>Property tax revenue tracked strongly with GDP per capita and HDI (r of about 0.88), pointing to its real value: funding public investment and redistribution, not short-term price control.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">Why This Matters (For Business & Policy Teams)</h3>
+                <p>The takeaway isn't just academic. It's a decision-relevant insight: <span class="highlight">if a stakeholder's goal is to cool prices quickly, property tax is the wrong lever; if the goal is sustainable public funding, it's a strong one.</span> This kind of distinction, matching the right tool to the right business objective and backing it with evidence rather than intuition, is exactly the judgment call a business or strategy analyst is expected to make when advising leadership on policy, pricing, or investment decisions.</p>
+
+                <div class="tech-stack">
+                    <h3 class="sub-heading">Technologies & Techniques Used</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon">
+                            <i class='bx bxl-python'></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class='bx bx-scatter-chart'></i>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class='bx bx-bar-chart-alt-2'></i>
+                            <span>Matplotlib</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class='bx bx-stats'></i>
+                            <span>2SLS / IV Regression</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">Conclusion</h3>
+                <p>Overall, property tax in Singapore behaves less like a short-term affordability dial and more like a fiscal engine funding long-run public investment. <span class="highlight">The strongest, most reliable relationships in the data were between property tax, GDP per capita, and HDI</span>, not between tax and affordability directly. For any organization using policy or pricing levers to influence a market, this project is a reminder to test causal assumptions before acting on correlation, and to match the tool to the actual objective rather than the most visible one.</p>
+
+                <div class="btn-group">
+                    <a href="HE4045_Project.pdf" class="btn" target="_blank">View Full Report</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
